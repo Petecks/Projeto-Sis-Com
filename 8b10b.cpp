@@ -67,64 +67,113 @@ for (size_t i=0; i<array3b.size(); ++i){
 
     int RD = 0;
 
-  std::vector<int> mensagem(8,1);
 
-  std::cout << "\n Mensagem Antes da codificacao:";
+    // SESSAO DE TESTE
+  std::vector<vector<int>> mensagem;
+  std::vector<int> info1(8,1);
+  std::vector<int> info2(8,0);
+  std::vector<int> info3(8,1);
+  std::vector<int> info4(8,0);
+  std::vector<int> info5(8,1);
+  std::vector<int> info6(8,0);
+  std::vector<int> info7(8,1);
+  std::vector<int> info8(8,0);
+    mensagem.push_back(info1);
+    mensagem.push_back(info2);
+    mensagem.push_back(info3);
+    mensagem.push_back(info4);
+    mensagem.push_back(info5);
+    mensagem.push_back(info6);
+    mensagem.push_back(info7);
+    mensagem.push_back(info8);
 
-  std::vector<string> mensagem10b(8); // miscela da mensagem a ser tratada
-  for (std::vector<int>::iterator it = mensagem.begin(); it != mensagem.end(); ++it)
-    std::cout << ' ' << *it;
+    std::cout << "\n Mensagem Antes da codificacao:";
+    for (std::vector<int>::iterator it = info1.begin(); it != info1.end(); ++it)
+      std::cout << ' ' << *it;
+      std::cout << "\n Mensagem Antes da codificacao:";
+    for (std::vector<int>::iterator it = info2.begin(); it != info2.end(); ++it)
+        std::cout << ' ' << *it;
+        std::cout << "\n Mensagem Antes da codificacao:";
+        for (std::vector<int>::iterator it = info3.begin(); it != info3.end(); ++it)
+          std::cout << ' ' << *it;
+          std::cout << "\n Mensagem Antes da codificacao:";
+          for (std::vector<int>::iterator it = info4.begin(); it != info4.end(); ++it)
+            std::cout << ' ' << *it;
+            std::cout << "\n Mensagem Antes da codificacao:";
+            for (std::vector<int>::iterator it = info5.begin(); it != info5.end(); ++it)
+              std::cout << ' ' << *it;
+              std::cout << "\n Mensagem Antes da codificacao:";
+              for (std::vector<int>::iterator it = info6.begin(); it != info6.end(); ++it)
+                std::cout << ' ' << *it;
+                std::cout << "\n Mensagem Antes da codificacao:";
+                for (std::vector<int>::iterator it = info7.begin(); it != info7.end(); ++it)
+                  std::cout << ' ' << *it;
+                  std::cout << "\n Mensagem Antes da codificacao:";
+                  for (std::vector<int>::iterator it = info8.begin(); it != info8.end(); ++it)
+                    std::cout << ' ' << *it;
+    // FIM DA SESSAO DE TESTE
 
-    std::cout << '\n' << mensagem10b.size() << endl;
 
 
-    // ------------------lida com 5b
-    for (int i = 0 ; i < 33 ; i++){
-        if (to_string(mensagem[3]) == array[i][0] && to_string(mensagem[4]) == array[i][1] && to_string(mensagem[5]) == array[i][2] && to_string(mensagem[6]) == array[i][3] && to_string(mensagem[7]) == array[i][4]){
-            if (RD < 0){
-                mensagem10b.push_back(to_string(!stoi(array[i][5])));
-                mensagem10b.push_back(to_string(!stoi(array[i][6])));
-                mensagem10b.push_back(to_string(!stoi(array[i][7])));
-                mensagem10b.push_back(to_string(!stoi(array[i][8])));
-                mensagem10b.push_back(to_string(!stoi(array[i][9])));
-                mensagem10b.push_back(to_string(!stoi(array[i][10])));
-                RD++;
-            }else{
-                mensagem10b.push_back(array[i][5]);
-                mensagem10b.push_back(array[i][6]);
-                mensagem10b.push_back(array[i][7]);
-                mensagem10b.push_back(array[i][8]);
-                mensagem10b.push_back(array[i][9]);
-                mensagem10b.push_back(array[i][10]);
-                if ( stoi(array[i][5]) + stoi(array[i][6]) + stoi(array[i][7]) + stoi(array[i][8]) + stoi(array[i][9]) + stoi(array[i][10]) > 3) RD--;
+
+
+      std::vector<vector<string> > todas_mensagens;  // 20 se refere a quantidade de caracteres a serem lidos
+
+    for (int elementos = 0 ; elementos < mensagem.size() ; elementos++){
+
+              std::vector<string> mensagem10b; // miscela da mensagem a ser tratada
+
+
+            // ------------------lida com 5b
+            for (int i = 0 ; i < 33 ; i++){
+                if (to_string(mensagem[elementos][3]) == array[i][0] && to_string(mensagem[elementos][4]) == array[i][1] && to_string(mensagem[elementos][5]) == array[i][2] && to_string(mensagem[elementos][6]) == array[i][3] && to_string(mensagem[elementos][7]) == array[i][4]){
+                    if (RD < 0){
+                        mensagem10b.push_back(to_string(!stoi(array[i][5])));
+                        mensagem10b.push_back(to_string(!stoi(array[i][6])));
+                        mensagem10b.push_back(to_string(!stoi(array[i][7])));
+                        mensagem10b.push_back(to_string(!stoi(array[i][8])));
+                        mensagem10b.push_back(to_string(!stoi(array[i][9])));
+                        mensagem10b.push_back(to_string(!stoi(array[i][10])));
+                        RD++;
+                    }else{
+                        mensagem10b.push_back(array[i][5]);
+                        mensagem10b.push_back(array[i][6]);
+                        mensagem10b.push_back(array[i][7]);
+                        mensagem10b.push_back(array[i][8]);
+                        mensagem10b.push_back(array[i][9]);
+                        mensagem10b.push_back(array[i][10]);
+                        if ( stoi(array[i][5]) + stoi(array[i][6]) + stoi(array[i][7]) + stoi(array[i][8]) + stoi(array[i][9]) + stoi(array[i][10]) > 3) RD--;
+                    }
+                }
             }
-        }
+
+
+            // ------------------lida com 3b
+            for (int i = 0 ; i < 8 ; i++){
+                if (to_string(mensagem[elementos][0]) == array3b[i][0] && to_string(mensagem[elementos][1]) == array3b[i][1] && to_string(mensagem[elementos][2]) == array3b[i][2] ){
+                    if (RD < 0){
+                        mensagem10b.push_back(to_string(!stoi(array3b[i][3])));
+                        mensagem10b.push_back(to_string(!stoi(array3b[i][4])));
+                        mensagem10b.push_back(to_string(!stoi(array3b[i][5])));
+                        mensagem10b.push_back(to_string(!stoi(array3b[i][6])));
+                        RD++;
+                    }else{
+                        mensagem10b.push_back(array3b[i][3]);
+                        mensagem10b.push_back(array3b[i][4]);
+                        mensagem10b.push_back(array3b[i][5]);
+                        mensagem10b.push_back(array3b[i][6]);
+                        if ( stoi(array[i][3]) + stoi(array[i][4]) + stoi(array[i][5]) + stoi(array[i][6]) > 2) RD--;
+                    }
+                }
+            }
+
+
+          std::cout << " \n Mensagem apos codificacao:";
+          for (std::vector<string>::iterator it = mensagem10b.begin(); it != mensagem10b.end(); ++it)
+            std::cout << ' ' << *it;
+
+        todas_mensagens.push_back(mensagem10b);
     }
 
-
-    // ------------------lida com 3b
-    for (int i = 0 ; i < 8 ; i++){
-        if (to_string(mensagem[0]) == array3b[i][0] && to_string(mensagem[1]) == array3b[i][1] && to_string(mensagem[2]) == array3b[i][2] ){
-            if (RD < 0){
-                mensagem10b.push_back(to_string(!stoi(array3b[i][3]));
-                mensagem10b.push_back(to_string(!stoi(array3b[i][4]));
-                mensagem10b.push_back(to_string(!stoi(array3b[i][5]));
-                mensagem10b.push_back(to_string(!stoi(array3b[i][6]));
-                RD++;
-            }else{
-                mensagem10b.push_back(array3b[i][3]);
-                mensagem10b.push_back(array3b[i][4]);
-                mensagem10b.push_back(array3b[i][5]);
-                mensagem10b.push_back(array3b[i][6]);
-                if ( stoi(array[i][3]) + stoi(array[i][4]) + stoi(array[i][5]) + stoi(array[i][6]) > 0) RD--;
-            }
-        }
-    }
-
-
-  std::cout << " \n Mensagem apos codificacao:";
-  for (std::vector<string>::iterator it = mensagem10b.begin(); it != mensagem10b.end(); ++it)
-    std::cout << ' ' << *it;
-    std::cout << '\n' << mensagem10b.size() << endl;
   return 0;
 }

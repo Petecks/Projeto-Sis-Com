@@ -1,50 +1,106 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <sstream> //istringstream
+#include <iostream> // cout
+#include <fstream> // ifstream
 
-enum 5b6b {  };
-enum 3b4b {  };
-
-
-
+using namespace std;
 
 int main(int argc, char const *argv[]) {
-  std::vector<int> mensagem(16,1);
-  //std::vector<int> mensagem_codificada;
 
-  std::cout << "Mensagem:";
-  for (std::vector<int>::iterator it = mensagem.begin(); it != mensagem.end(); ++it)
-    std::cout << ' ' << *it;
-  std::cout << "\n Mensagem Codificada";
-  for (std::vector<int>::iterator it = mensagem_codificada.begin(); it != mensagem_codificada.end(); ++it)
-    std::cout << ' ' << *it;
-  std::cout << '\n';
+//****************************** 5B6B
 
+    ifstream in("coding5b.csv");
 
-  while (!mensagem.empty()) {
-    std::vector<int> mensagem_5b; // miscela da mensagem a ser tratada
-    std::vector<int> mensagem_3b; // miscela da mensagem a ser tratada
-    std::vector<int> mensagem_8b; // miscela da mensagem a ser tratada
+    string line, field;
 
-    for (int i = 0 ; i < 5 ; i++){    //5b6b
-      mensagem_5b.push_back(mensagem.front());
-      mensagem.erase(mensagem.begin());
+    vector< vector<string> > array;  // the 2D array
+    vector<string> v;                // array of values for one line only
+
+    while ( getline(in,line) ){
+        v.clear();
+        stringstream ss(line);
+        while (getline(ss,field,',')){
+            v.push_back(field);  // add each field to the 1D array
+        }
+        array.push_back(v);  // add the 1D array to the 2D array
     }
 
-
-    for (int i = 0 ; i < 3 ; i++){  //3b4b
-      mensagem_3b.push_back(mensagem.front());
-      mensagem.erase(mensagem.begin());
+    // print out what was read in
+    cout << "CODIFICACAO 5B" << "\n";
+    for (size_t i=0; i<array.size(); ++i){
+        for (size_t j=0; j<array[i].size(); ++j){
+            cout << array[i][j] << "|"; // (separate fields by |)
+        }
+        cout << "\n";
     }
 
+//********************************  3B4B
 
-  }
-  std::cout << "APOSS \n Mensagem:";
+ifstream in3b("coding3b.csv");
+
+string line3b, field3b;
+
+vector< vector<string> > array3b;  // the 2D array
+vector<string> v3b;                // array of values for one line only
+
+while ( getline(in3b,line3b) ){
+    v3b.clear();
+    stringstream ss3b(line3b);
+    while (getline(ss3b,field3b,',')){
+        v3b.push_back(field3b);  // add each field to the 1D array
+    }
+    array3b.push_back(v3b);  // add the 1D array to the 2D array
+}
+
+// print out what was read in
+cout << "CODIFICACAO 3B" << "\n";
+for (size_t i=0; i<array3b.size(); ++i){
+    for (size_t j=0; j<array3b[i].size(); ++j){
+        cout << array3b[i][j] << "|"; // (separate fields by |)
+    }
+    cout << "\n";
+}
+
+//*****************************************************
+
+  std::vector<int> mensagem(8,1);
+
+  std::cout << "\n Mensagem Antes da codificacao:";
+
+  std::vector<string> mensagem10b; // miscela da mensagem a ser tratada
   for (std::vector<int>::iterator it = mensagem.begin(); it != mensagem.end(); ++it)
     std::cout << ' ' << *it;
-  std::cout << "\n Mensagem Codificada";
-  for (std::vector<int>::iterator it = mensagem_codificada.begin(); it != mensagem_codificada.end(); ++it)
+
+
+
+
+    // ------------------lida com 5b
+    for (int i = 0 ; i < 5 ; i++){
+        if (to_string(mensagem[0]) == array[i][0] && to_string(mensagem[1]) == array[i][1] && to_string(mensagem[2]) == array[i][2] && to_string(mensagem[3]) == array[i][3] && to_string(mensagem[4]) == array[i][4]){
+            mensagem10b.push_back(array[i][5]);
+            mensagem10b.push_back(array[i][6]);
+            mensagem10b.push_back(array[i][7]);
+            mensagem10b.push_back(array[i][8]);
+            mensagem10b.push_back(array[i][9]);
+            mensagem10b.push_back(array[i][10]);
+        }
+    }
+
+    // ------------------lida com 3b
+    for (int i = 0 ; i < 3 ; i++){
+        if (to_string(mensagem[0]) == array3b[i][0] && to_string(mensagem[1]) == array3b[i][1] && to_string(mensagem[2]) == array3b[i][2] ){
+            mensagem10b.push_back(array3b[i][3]);
+            mensagem10b.push_back(array3b[i][4]);
+            mensagem10b.push_back(array3b[i][5]);
+            mensagem10b.push_back(array3b[i][6]);
+        }
+    }
+
+  std::cout << " \n Mensagem apos codificacao:";
+  for (std::vector<string>::iterator it = mensagem10b.begin(); it != mensagem10b.end(); ++it)
     std::cout << ' ' << *it;
-  std::cout << '\n';
 
   return 0;
 }
